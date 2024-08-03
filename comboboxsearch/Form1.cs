@@ -40,5 +40,52 @@ namespace comboboxsearch
             statecomboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (isvalid())
+            {
+                MessageBox.Show("good job ", "congrat", MessageBoxButtons.OK);
+            }
+        }
+
+        private bool isvalid()
+        {
+            bool value = true;
+            if (inttextbox.Text == string.Empty)
+            {
+                MessageBox.Show("Please enter int-box value", "missing", MessageBoxButtons.OK);
+                inttextbox.Focus();
+                return false;
+            }
+            else
+            {
+                int num;
+                bool isNumeric = int.TryParse(inttextbox.Text.Trim(), out num);
+                if (!isNumeric)
+                {
+                    MessageBox.Show("Please enter integer value", "missing", MessageBoxButtons.OK);
+                    inttextbox.Focus();
+                    return false;
+                }
+            }
+            if (decimaltextBox.Text == string.Empty)
+            {
+                MessageBox.Show("Please enter decimal-box value", "missing", MessageBoxButtons.OK);
+                decimaltextBox.Focus();
+                return false;
+            }
+            else
+            {
+                decimal num;
+                bool isNumeric = decimal.TryParse(decimaltextBox.Text.Trim(), out num);
+                if (!isNumeric)
+                {
+                    MessageBox.Show("Please enter decimal value", "missing", MessageBoxButtons.OK);
+                    decimaltextBox.Focus();
+                    return false;
+                }
+            }
+            return value;
+        }
     }
 }
